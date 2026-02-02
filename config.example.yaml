@@ -1,0 +1,45 @@
+# OCPI EMSP Simulator Configuration Example
+# Copy this file to config.yaml and update the values
+
+# Server Settings
+host: "127.0.0.1"
+port: 8000
+log_level: "info"
+environment: "local" # options: local, staging
+logging:
+  log_to_file: true
+  file_path: "logs/emsp-simulator.log"
+
+# Validation Settings
+# HTTP Status Code to return when schema validation fails.
+# Options: 200 (OCPI style strictness) or 400 (Better testing signaling)
+validation_error_http_status: 400
+
+# Authentication
+# Token we expect the CPO to use when calling us (POST /credentials check this header)
+# bootstrap_token is only for initial credentials handshake
+bootstrap_token: "REPLACE_WITH_YOUR_BOOTSTRAP_TOKEN"
+
+# Token we use when calling the CPO
+# emsp_token_to_cpo is used by the simulator when calling the CPO
+emsp_token_to_cpo: "REPLACE_WITH_YOUR_EMSP_TOKEN"
+
+# The token the CPO *actually* uses after exchange (stored in state)
+# cpo_token_to_emsp is the permanent token used by the CPO after exchange
+cpo_token_to_emsp: "REPLACE_WITH_EXPECTED_CPO_TOKEN_AFTER_EXCHANGE"
+
+
+# CPO Endpoints
+cpo_url: "http://localhost:3000/api"  # Base URL of the CPO
+
+# Business Details
+business_details:
+  name: "Savekar EMSP Simulator"
+  website: "https://savekar.com"
+  logo:
+    url: "https://savekar.com/logo.png"
+    thumbnail: "https://savekar.com/logo_thumb.png"
+    category: "OPERATOR"
+    type: "png"
+    width: 512
+    height: 512

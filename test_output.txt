@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\__main__.py", line 18, in <module>
+    main(module=None)
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\main.py", line 101, in __init__
+    self.parseArgs(argv)
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\main.py", line 150, in parseArgs
+    self.createTests()
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\main.py", line 161, in createTests
+    self.test = self.testLoader.loadTestsFromNames(self.testNames,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 232, in loadTestsFromNames
+    suites = [self.loadTestsFromName(name, module) for name in names]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 232, in <listcomp>
+    suites = [self.loadTestsFromName(name, module) for name in names]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\AppData\Local\Programs\Python\Python311\Lib\unittest\loader.py", line 162, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\simulator\ocpi-test\ocpi-emsp-simulator\tests\test_credentials.py", line 2, in <module>
+    from app.main import app
+  File "D:\simulator\ocpi-test\ocpi-emsp-simulator\app\main.py", line 4, in <module>
+    from .routes import versions, credentials, locations, cdrs
+  File "D:\simulator\ocpi-test\ocpi-emsp-simulator\app\routes\credentials.py", line 3, in <module>
+    from app.state import state
+  File "D:\simulator\ocpi-test\ocpi-emsp-simulator\app\state.py", line 29, in <module>
+    state = State()
+            ^^^^^^^
+  File "D:\simulator\ocpi-test\ocpi-emsp-simulator\app\state.py", line 9, in __new__
+    cls._instance._init()
+  File "D:\simulator\ocpi-test\ocpi-emsp-simulator\app\state.py", line 15, in _init
+    self.emsp_token_to_cpo = config.initial_emsp_token_to_emsp
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Config' object has no attribute 'initial_emsp_token_to_emsp'. Did you mean: 'initial_cpo_token_to_emsp'?

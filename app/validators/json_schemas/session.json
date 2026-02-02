@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "country_code",
+    "party_id",
+    "id",
+    "start_date_time",
+    "kwh",
+    "cdr_token",
+    "auth_method",
+    "location_id",
+    "evse_uid",
+    "status",
+    "last_updated",
+    "currency",
+    "total_cost"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "COMPLETED", "INVALID", "PENDING", "RESERVATION"]
+    },
+    "kwh": {
+        "type": "number"
+    },
+     "total_cost": {
+      "type": "object",
+      "required": ["excl_vat", "incl_vat"],
+      "properties": {
+         "excl_vat": { "type": "number" },
+         "incl_vat": { "type": "number" }
+      }
+    }
+  }
+}

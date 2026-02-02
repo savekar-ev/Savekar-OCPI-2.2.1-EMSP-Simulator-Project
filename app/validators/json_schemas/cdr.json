@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "country_code",
+    "party_id",
+    "id",
+    "start_date_time",
+    "end_date_time",
+    "auth_id",
+    "auth_method",
+    "currency",
+    "total_cost",
+    "total_energy",
+    "total_time"
+  ],
+  "properties": {
+    "country_code": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "party_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "id": {
+      "type": "string",
+      "maxLength": 39
+    },
+    "start_date_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_date_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "auth_id": {
+      "type": "string",
+      "maxLength": 36
+    },
+    "auth_method": {
+      "type": "string",
+      "enum": ["AUTH_REQUEST", "COMMAND", "WHITELIST"]
+    },
+    "total_cost": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3
+    }
+  }
+}

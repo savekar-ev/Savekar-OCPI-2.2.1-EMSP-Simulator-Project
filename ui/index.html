@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCPI EMSP Simulator UI</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background: #f0f2f5; color: #333; }
+        h1, h2 { color: #2c3e50; }
+        .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"] { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { background: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 14px; margin-right: 5px; margin-bottom: 5px;}
+        button:hover { background: #2980b9; }
+        button.secondary { background: #95a5a6; }
+        button.secondary:hover { background: #7f8c8d; }
+        
+        pre { background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 4px; overflow-x: auto; max-height: 500px; font-family: 'Consolas', monospace; font-size: 12px; }
+        
+        .status-bar { padding: 10px; background: #dfe6e9; border-radius: 4px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;}
+    </style>
+</head>
+<body>
+
+    <h1>OCPI EMSP Simulator Dashboard</h1>
+    
+    <div class="status-bar">
+        <span><strong>Status:</strong> <span id="connection-status">Checking...</span></span>
+        <button onclick="loadConfig()" class="secondary">Refresh Config</button>
+    </div>
+
+    <div class="container">
+        
+        <!-- Configuration -->
+        <div class="card">
+            <h2>Configuration</h2>
+            <label for="cpo-url">CPO API URL</label>
+            <input type="text" id="cpo-url" placeholder="http://localhost:8080/ocpi/cpo">
+            
+            <label for="bootstrap-token">Bootstrap Token (Token A)</label>
+            <input type="text" id="bootstrap-token" placeholder="Enter bootstrap token">
+            
+            <button onclick="saveConfig()">Update Config</button>
+        </div>
+
+        <!-- Actions -->
+        <div class="card">
+            <h2>Actions</h2>
+            <div style="margin-bottom: 15px;">
+                <h3>Handshake</h3>
+                <button onclick="triggerAction('credentials')">1. Credentials Exchange</button>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <h3>Discovery</h3>
+                <button onclick="triggerAction('versions')">2. Get Versions</button>
+                <button onclick="triggerAction('locations')">3. Get Locations</button>
+                <button onclick="triggerAction('tariffs')">4. Get Tariffs</button>
+            </div>
+            
+            <div>
+                <h3>Sessions</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px;">
+                    <input type="text" id="loc-id" placeholder="Location ID">
+                    <input type="text" id="evse-uid" placeholder="EVSE UID">
+                    <input type="text" id="token-uid" placeholder="Token UID">
+                </div>
+                <button onclick="startSession()">Start Session</button>
+                
+                <div style="display: grid; grid-template-columns: 1fr; gap: 5px; margin-top: 10px;">
+                    <input type="text" id="session-id" placeholder="Session ID to Stop">
+                </div>
+                <button onclick="stopSession()">Stop Session</button>
+            </div>
+        </div>
+
+        <!-- Output -->
+        <div class="card full-width">
+            <h2>Output / Logs</h2>
+            <pre id="output">Ready...</pre>
+        </div>
+
+    </div>
+
+    <script>
+        const API_BASE = '/ui';
+
+        async function loadConfig() {
+            try {
+                const res = await fetch(`${API_BASE}/config`);
+                const data = await res.json();
+                document.getElementById('cpo-url').value = data.cpo_url || '';
+                document.getElementById('bootstrap-token').value = data.bootstrap_token || '';
+                document.getElementById('connection-status').textContent = "Connected to EMSP Backend";
+                document.getElementById('connection-status').style.color = "green";
+            } catch (e) {
+                document.getElementById('connection-status').textContent = "Backend Offline?";
+                document.getElementById('connection-status').style.color = "red";
+                log("Error loading config: " + e);
+            }
+        }
+
+        async function saveConfig() {
+            const cpo_url = document.getElementById('cpo-url').value;
+            const bootstrap_token = document.getElementById('bootstrap-token').value;
+            
+            try {
+                const res = await fetch(`${API_BASE}/config`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({cpo_url, bootstrap_token})
+                });
+                const data = await res.json();
+                log("Config Updated: " + JSON.stringify(data));
+            } catch (e) {
+                log("Error saving config: " + e);
+            }
+        }
+
+        async function triggerAction(action) {
+            log(`Triggering ${action}...`);
+            try {
+                const res = await fetch(`${API_BASE}/actions/${action}`, { method: 'POST' });
+                const data = await res.json();
+                log(JSON.stringify(data, null, 2));
+            } catch (e) {
+                log(`Error ${action}: ` + e);
+            }
+        }
+
+        async function startSession() {
+            const location_id = document.getElementById('loc-id').value;
+            const evse_uid = document.getElementById('evse-uid').value;
+            const token_uid = document.getElementById('token-uid').value;
+            
+            if (!location_id || !evse_uid) {
+                log("Please provide Location ID and EVSE UID");
+                return;
+            }
+
+            log("Starting Session...");
+            try {
+                const res = await fetch(`${API_BASE}/actions/sessions/start`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({location_id, evse_uid, token_uid})
+                });
+                const data = await res.json();
+                log(JSON.stringify(data, null, 2));
+            } catch (e) {
+                log("Error starting session: " + e);
+            }
+        }
+
+        async function stopSession() {
+             const session_id = document.getElementById('session-id').value;
+             if (!session_id) {
+                log("Please provide Session ID");
+                return;
+            }
+            
+            log("Stopping Session...");
+             try {
+                const res = await fetch(`${API_BASE}/actions/sessions/stop`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({session_id})
+                });
+                const data = await res.json();
+                log(JSON.stringify(data, null, 2));
+            } catch (e) {
+                log("Error stopping session: " + e);
+            }
+        }
+
+        function log(msg) {
+            const output = document.getElementById('output');
+            const time = new Date().toLocaleTimeString();
+            output.textContent = `[${time}] ${msg}\n\n` + output.textContent;
+        }
+
+        // Init
+        loadConfig();
+    </script>
+</body>
+</html>

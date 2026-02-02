@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["uid", "status", "connectors"],
+  "properties": {
+      "uid": { "type": "string", "maxLength": 36 },
+      "evse_id": { "type": "string", "maxLength": 48 },
+      "status": {
+          "type": "string",
+          "enum": ["AVAILABLE", "BLOCKED", "CHARGING", "INOPERATIVE", "OUTOFORDER", "PLANNED", "REMOVED", "RESERVED", "UNKNOWN"]
+      },
+      "connectors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+              "type": "object",
+              "required": ["id", "standard", "format", "power_type", "max_voltage", "max_amperage", "last_updated"],
+              "properties": {
+                  "id": { "type": "string", "maxLength": 36 },
+                  "standard": {
+                      "type": "string",
+                      "enum": ["CHADEMO", "CHAOJI", "DOMESTIC_A", "DOMESTIC_B", "DOMESTIC_C", "DOMESTIC_D", "DOMESTIC_E", "DOMESTIC_F", "DOMESTIC_G", "DOMESTIC_H", "DOMESTIC_I", "DOMESTIC_J", "DOMESTIC_K", "DOMESTIC_L", "IEC_60309_2_single_16", "IEC_60309_2_three_16", "IEC_60309_2_three_32", "IEC_60309_2_three_64", "IEC_62196_T1", "IEC_62196_T1_COMBO", "IEC_62196_T2", "IEC_62196_T2_COMBO", "IEC_62196_T3A", "IEC_62196_T3C", "PANTOGRAPH_BOTTOM_UP", "PANTOGRAPH_TOP_DOWN", "TESLA_R", "TESLA_S", "UNKNOWN"]
+                  },
+                  "format": {
+                      "type": "string",
+                      "enum": ["SOCKET", "CABLE"]
+                  },
+                  "power_type": {
+                      "type": "string",
+                      "enum": ["AC_1_PHASE", "AC_3_PHASE", "DC"]
+                  },
+                  "max_voltage": { "type": "integer" },
+                  "max_amperage": { "type": "integer" },
+                  "last_updated": { "type": "string", "format": "date-time" }
+              }
+          }
+      },
+      "last_updated": { "type": "string", "format": "date-time" }
+  }
+}
