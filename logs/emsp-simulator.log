@@ -1186,3 +1186,126 @@
 2026-01-29 17:28:13,583 - INFO - Response Status: 404
 2026-01-29 17:28:26,633 - INFO - Incoming Request: GET http://localhost:8000/ui/config
 2026-01-29 17:28:26,635 - INFO - Response Status: 200
+2026-02-07 14:58:24,852 - INFO - Incoming Request: GET http://127.0.0.1:8000/ocpi/emsp/2.2.1
+2026-02-07 14:58:24,863 - INFO - Response Status: 200
+2026-02-07 15:05:14,889 - INFO - Incoming Request: GET http://127.0.0.1:8000/ocpi/emsp/2.2.1
+2026-02-07 15:05:14,899 - INFO - Response Status: 200
+2026-02-07 15:05:14,941 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:05:14,954 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T09:35:14.721Z'} | Context: Path=1/5
+2026-02-07 15:05:14,955 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 15:05:14,956 - INFO - Response Status: 200
+2026-02-07 15:05:17,078 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/f53d5dbd-21c9-4dc5-8f5e-450ed6aaf4cc
+2026-02-07 15:05:17,086 - INFO - [CPO->EMSP][sessions] New Session Created via PATCH | Context: SessionID=f53d5dbd-21c9-4dc5-8f5e-450ed6aaf4cc
+2026-02-07 15:05:17,088 - INFO - [CPO->EMSP][sessions] Session f53d5dbd-21c9-4dc5-8f5e-450ed6aaf4cc updated | Context: status=ACTIVE
+2026-02-07 15:05:17,089 - INFO - Response Status: 200
+2026-02-07 15:05:17,102 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:05:17,106 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T09:35:17.093Z'} | Context: Path=1/5
+2026-02-07 15:05:17,106 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 15:05:17,107 - INFO - Response Status: 200
+2026-02-07 15:06:45,503 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:06:45,514 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T09:36:45.476Z'} | Context: Path=1/5
+2026-02-07 15:06:45,515 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 15:06:45,517 - INFO - Response Status: 200
+2026-02-07 15:06:45,594 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/f53d5dbd-21c9-4dc5-8f5e-450ed6aaf4cc
+2026-02-07 15:06:45,597 - INFO - [CPO->EMSP][sessions] Session f53d5dbd-21c9-4dc5-8f5e-450ed6aaf4cc updated | Context: status=COMPLETED
+2026-02-07 15:06:45,599 - INFO - Response Status: 200
+2026-02-07 15:06:45,658 - INFO - Incoming Request: POST http://127.0.0.1:8000/ocpi/emsp/2.2.1/cdrs
+2026-02-07 15:06:45,679 - INFO - [CPO->EMSP][cdrs] Incoming CDR Payload: {'country_code': 'IN', 'party_id': 'LKB', 'id': '00aeebfb-bc86-428b-a419-7119bea92394', 'start_date_time': '2026-02-07T04:05:16.977Z', 'end_date_time': '2026-02-07T04:06:45.529Z', 'auth_id': 'UNKNOWN', 'auth_method': 'COMMAND', 'location_id': '1', 'evse_uid': '5', 'connector_id': '1', 'currency': 'INR', 'charging_periods': [{'start_date_time': '2026-02-07T04:05:16.977Z', 'dimensions': [{'type': 'ENERGY', 'volume': 0.117}, {'type': 'TIME', 'volume': 88}]}], 'total_cost': 1.755, 'total_energy': 0.117, 'total_time': 88, 'last_updated': '2026-02-07T09:36:45.635Z'}
+2026-02-07 15:06:45,682 - INFO - [CPO->EMSP][cdrs] Received Valid CDR 00aeebfb-bc86-428b-a419-7119bea92394 | Context: Party=LKB
+2026-02-07 15:06:45,683 - INFO - Response Status: 200
+2026-02-07 15:06:45,765 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:06:45,773 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T09:36:45.747Z'} | Context: Path=1/5
+2026-02-07 15:06:45,776 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 15:06:45,778 - INFO - Response Status: 200
+2026-02-07 15:07:44,203 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:07:44,208 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T09:37:44.189Z'} | Context: Path=1/5
+2026-02-07 15:07:44,209 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 15:07:44,216 - INFO - Response Status: 200
+2026-02-07 15:07:46,467 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/c84d1f01-7817-4548-bca6-1066775b7f16
+2026-02-07 15:07:46,469 - INFO - [CPO->EMSP][sessions] New Session Created via PATCH | Context: SessionID=c84d1f01-7817-4548-bca6-1066775b7f16
+2026-02-07 15:07:46,470 - INFO - [CPO->EMSP][sessions] Session c84d1f01-7817-4548-bca6-1066775b7f16 updated | Context: status=ACTIVE
+2026-02-07 15:07:46,472 - INFO - Response Status: 200
+2026-02-07 15:07:46,666 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:07:46,673 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T09:37:46.660Z'} | Context: Path=1/5
+2026-02-07 15:07:46,673 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 15:07:46,674 - INFO - Response Status: 200
+2026-02-07 15:14:28,893 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:14:28,925 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T09:44:28.839Z'} | Context: Path=1/5
+2026-02-07 15:14:28,926 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 15:14:28,929 - INFO - Response Status: 200
+2026-02-07 15:14:29,038 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:14:29,040 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T09:44:29.032Z'} | Context: Path=1/5
+2026-02-07 15:14:29,040 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 15:14:29,041 - INFO - Response Status: 200
+2026-02-07 15:18:37,235 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:18:37,239 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T09:48:37.217Z'} | Context: Path=1/5
+2026-02-07 15:18:37,240 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 15:18:37,241 - INFO - Response Status: 200
+2026-02-07 15:18:39,365 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/af3a50f9-7315-4300-95b5-27cfb5133fd2
+2026-02-07 15:18:39,374 - INFO - [CPO->EMSP][sessions] New Session Created via PATCH | Context: SessionID=af3a50f9-7315-4300-95b5-27cfb5133fd2
+2026-02-07 15:18:39,375 - INFO - [CPO->EMSP][sessions] Session af3a50f9-7315-4300-95b5-27cfb5133fd2 updated | Context: status=ACTIVE
+2026-02-07 15:18:39,377 - INFO - Response Status: 200
+2026-02-07 15:18:39,388 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 15:18:39,394 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T09:48:39.382Z'} | Context: Path=1/5
+2026-02-07 15:18:39,394 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 15:18:39,396 - INFO - Response Status: 200
+2026-02-07 17:50:31,687 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 17:50:31,759 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T12:20:31.289Z'} | Context: Path=1/5
+2026-02-07 17:50:31,760 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 17:50:31,765 - INFO - Response Status: 200
+2026-02-07 17:50:58,444 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 17:50:58,450 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T12:20:58.432Z'} | Context: Path=1/5
+2026-02-07 17:50:58,451 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 17:50:58,451 - INFO - Response Status: 200
+2026-02-07 17:51:00,555 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/67e8eedd-fea7-438e-984b-e530e3235753
+2026-02-07 17:51:00,562 - INFO - [CPO->EMSP][sessions] New Session Created via PATCH | Context: SessionID=67e8eedd-fea7-438e-984b-e530e3235753
+2026-02-07 17:51:00,563 - INFO - [CPO->EMSP][sessions] Session 67e8eedd-fea7-438e-984b-e530e3235753 updated | Context: status=ACTIVE
+2026-02-07 17:51:00,563 - INFO - Response Status: 200
+2026-02-07 17:51:00,584 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 17:51:00,587 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T12:21:00.580Z'} | Context: Path=1/5
+2026-02-07 17:51:00,587 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 17:51:00,588 - INFO - Response Status: 200
+2026-02-07 18:12:06,677 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:12:06,686 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T12:42:06.629Z'} | Context: Path=1/5
+2026-02-07 18:12:06,687 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 18:12:06,687 - INFO - Response Status: 200
+2026-02-07 18:12:59,301 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:12:59,307 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T12:42:59.282Z'} | Context: Path=1/5
+2026-02-07 18:12:59,307 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 18:12:59,308 - INFO - Response Status: 200
+2026-02-07 18:13:01,406 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:13:01,410 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T12:43:01.399Z'} | Context: Path=1/5
+2026-02-07 18:13:01,410 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 18:13:01,411 - INFO - Response Status: 200
+2026-02-07 18:13:01,474 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/60979038-744a-4074-98f1-27faeba79dce
+2026-02-07 18:13:01,479 - INFO - [CPO->EMSP][sessions] New Session Created via PATCH | Context: SessionID=60979038-744a-4074-98f1-27faeba79dce
+2026-02-07 18:13:01,480 - INFO - [CPO->EMSP][sessions] Session 60979038-744a-4074-98f1-27faeba79dce updated | Context: status=ACTIVE
+2026-02-07 18:13:01,480 - INFO - Response Status: 200
+2026-02-07 18:16:20,051 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:16:20,057 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T12:46:20.035Z'} | Context: Path=1/5
+2026-02-07 18:16:20,057 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 18:16:20,058 - INFO - Response Status: 200
+2026-02-07 18:16:20,154 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:16:20,158 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T12:46:20.148Z'} | Context: Path=1/5
+2026-02-07 18:16:20,158 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 18:16:20,159 - INFO - Response Status: 200
+2026-02-07 18:17:58,520 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:17:58,523 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T12:47:58.511Z'} | Context: Path=1/5
+2026-02-07 18:17:58,523 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 18:17:58,524 - INFO - Response Status: 200
+2026-02-07 18:18:00,595 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:18:00,597 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'CHARGING', 'last_updated': '2026-02-07T12:48:00.591Z'} | Context: Path=1/5
+2026-02-07 18:18:00,598 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=CHARGING
+2026-02-07 18:18:00,598 - INFO - Response Status: 200
+2026-02-07 18:18:00,652 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/sessions/6e397908-8919-4141-aaec-1e72aa42dd5f
+2026-02-07 18:18:00,657 - INFO - [CPO->EMSP][sessions] New Session Created via PATCH | Context: SessionID=6e397908-8919-4141-aaec-1e72aa42dd5f
+2026-02-07 18:18:00,657 - INFO - [CPO->EMSP][sessions] Session 6e397908-8919-4141-aaec-1e72aa42dd5f updated | Context: status=ACTIVE
+2026-02-07 18:18:00,657 - INFO - Response Status: 200
+2026-02-07 18:19:07,765 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:19:07,770 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T12:49:07.750Z'} | Context: Path=1/5
+2026-02-07 18:19:07,770 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 18:19:07,771 - INFO - Response Status: 200
+2026-02-07 18:19:07,816 - INFO - Incoming Request: PATCH http://127.0.0.1:8000/ocpi/emsp/2.2.1/locations/1/5
+2026-02-07 18:19:07,818 - INFO - [CPO->EMSP][locations] Received PATCH payload: {'status': 'AVAILABLE', 'last_updated': '2026-02-07T12:49:07.813Z'} | Context: Path=1/5
+2026-02-07 18:19:07,818 - INFO - [CPO->EMSP][locations] Updated EVSE | Context: Path=1/5 | Status=AVAILABLE
+2026-02-07 18:19:07,818 - INFO - Response Status: 200

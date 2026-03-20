@@ -135,3 +135,15 @@ This script will:
 - `app/validators/json_schemas/`: Official OCPI 2.2.1 schemas.
 - `tests/`: Automated verification scripts.
 - `ui/`: Simple HTML/JS frontend for the simulator.
+
+## 🤝 Test Your OCPI Integration With Us
+
+Are you building a **production-grade CPO** and want to validate your OCPI implementation against a real EMSP before going live with a roaming partner?
+
+We offer connectivity testing against our hosted EMSP simulator. Reach out to us and we'll help you verify your OCPI handshake, Location pushes, Session updates, and CDR submissions are spec-compliant.
+
+- 📧 **Email**: [savekarev@gmail.com](mailto:savekarev@gmail.com)
+- 💬 **GitHub**: [Open an issue or discussion](../../issues) on this repository
+- 🌐 **More details**: [https://savekar.com/ocpi-simulator](https://savekar.com/ocpi-simulator)
+
+---
